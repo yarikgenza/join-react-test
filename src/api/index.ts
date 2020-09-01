@@ -2,7 +2,7 @@ interface IApi {
     request: (url: string, params: {} | any) => Promise<any>,
 };
 
-const API_URL = `http://localhost:${process.env.PORT || 4000}/api`;
+const API_URL = process.env.NODE_ENV === 'development' ? 'localhost:4000' : `/api`;
 
 export default class Api implements IApi {
     request = async (url: string, params = {}) => {  
