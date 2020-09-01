@@ -4,7 +4,7 @@ const app = express();
 
 const PORT = process.env.PORT || 4000;
 
-app.use(express.static(__dirname + 'dist'));
+app.use(express.static('build'));
 app.use(express.json());
 
 app.use((_req, res, next) => {
@@ -25,9 +25,7 @@ const candidateStates = {
 
 const readCandidatesFromFile = async () => {
     const candidatesFromFile = require('./data/candidates.json');
-
     candidatesFromFile.forEach(item => item.id = uuid());
-
     candidates.push(...candidatesFromFile);
 };
 
@@ -37,8 +35,6 @@ app.get('/api/candidates', async (req, res) => {
 });
 
 app.post('/api/candidates/apply', (req, res) => {
-
-    console.log(req.body);
     const now = new Date();
 
     const candidate = {

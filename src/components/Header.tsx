@@ -14,7 +14,7 @@ export default function Header() {
               Apply
             </Typography>
           </NavLink>
-          <NavLink exact to="/candidates" className={classes.navLink}>
+          <NavLink exact to="/candidates" className={classes.navLink} data-cy="header:candidates_link">
             <Typography variant="h6" className={classes.navTitle}>
               Candidates
             </Typography>

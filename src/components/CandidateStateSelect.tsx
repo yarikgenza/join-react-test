@@ -32,7 +32,7 @@ const CandidateStateSelect = (props: CandidateStateSelectProps) => {
       <DialogTitle id="simple-dialog-title">Set state for {candidate.fullName}</DialogTitle>
       <List>
         {states.map((state) => (
-          <ListItem button onClick={() => handleListItemClick(state)} key={state}>
+          <ListItem button onClick={() => handleListItemClick(state)} key={state} data-cy={`state_selector:${state}`}>
             <ListItemText primary={state} />
           </ListItem>
         ))}

@@ -23,7 +23,8 @@
     "start": "node server.js",
     "dev": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "yarn build && start-server-and-test start http://localhost:4000 cypress",
+    "cypress": "cypress run",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -40,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "^5.0.0",
+    "start-server-and-test": "^1.11.3"
   }
 }

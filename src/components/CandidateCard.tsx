@@ -49,7 +49,9 @@ const CandidateCard = ({ candidate }: { candidate: Candidate }) => {
     }
     
     return (
-        <Card className={classes.root} variant="outlined">
+        <Card className={classes.root}
+            variant="outlined"
+        >
             <CardHeader
                 avatar={
                     <Avatar>
@@ -58,7 +60,12 @@ const CandidateCard = ({ candidate }: { candidate: Candidate }) => {
                 }
                 action={[
                     <ApplicationStatus state={candidate.state} />,
-                    <IconButton aria-label="settings" aria-haspopup="true" onClick={(e) => handleOpenMenu(e)}>
+                    <IconButton
+                        aria-label="settings"
+                        aria-haspopup="true"
+                        onClick={(e) => handleOpenMenu(e)}
+                        data-cy="candidate_card:menu_btn"
+                    >
                         <MoreVertIcon />
                     </IconButton>,
                     <Menu
@@ -67,10 +74,16 @@ const CandidateCard = ({ candidate }: { candidate: Candidate }) => {
                         onClose={handleCloseMenu}
                         keepMounted
                     >
-                        <MenuItem onClick={() => onUpdateStatusClick()}>
+                        <MenuItem
+                            onClick={() => onUpdateStatusClick()}
+                            data-cy="candidate_card:update_state_btn" 
+                        >
                             Update Status
                         </MenuItem>
-                        <MenuItem onClick={onDeleteClick}>
+                        <MenuItem
+                            onClick={onDeleteClick}
+                            data-cy="candidate_card:delete_btn"
+                        >
                             Delete
                         </MenuItem>
                     </Menu>,
@@ -82,8 +95,9 @@ const CandidateCard = ({ candidate }: { candidate: Candidate }) => {
                     ]}
                     title={candidate.fullName || 'Anonymous'}
                     subheader={candidate.email || 'Email not specified'}
+                    data-cy={`candidate_card:${candidate.fullName}`}
                 />
-            <CardContent>
+            <CardContent data-cy={`candidate_card_content:${candidate.fullName}`}>
                 <Typography variant="body2" color="textSecondary" component="p">
                     Application score: <b>{calculateApplicationScore(candidate)}%</b>
                 </Typography>

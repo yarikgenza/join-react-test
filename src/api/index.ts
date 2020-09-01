@@ -2,7 +2,7 @@ interface IApi {
     request: (url: string, params: {} | any) => Promise<any>,
 };
 
-const API_URL = `http://localhost:4000/api`; // change me before deploy to heroku
+const API_URL = `http://localhost:${process.env.PORT || 4000}/api`;
 
 export default class Api implements IApi {
     request = async (url: string, params = {}) => {  

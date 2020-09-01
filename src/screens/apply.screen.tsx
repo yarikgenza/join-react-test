@@ -49,7 +49,8 @@ const ApplyScreen = () => {
                 <div>Loading...</div>
             ) : (
                 <form className={classes.form} noValidate autoComplete="off">
-                <Typography variant="h4">Apply to position</Typography>
+
+                <Typography variant="h4" data-cy="apply_screen:form_title" >Apply to position</Typography>
     
                 <div className={classes.formItem}>
                     <TextField
@@ -59,6 +60,7 @@ const ApplyScreen = () => {
                         label="Full Name"
                         name="fullName"
                         value={values.fullName}
+                        data-cy="apply_screen:form:fullName"
                     />
                 </div>
     
@@ -67,7 +69,9 @@ const ApplyScreen = () => {
                         onChange={handleInputChange}
                         value={values.email}
                         name="email"
-                        variant="outlined" fullWidth id="standard-disabled" label="Email" />
+                        variant="outlined" fullWidth id="standard-disabled" label="Email"
+                        data-cy="apply_screen:form:email"
+                    />
                 </div>
     
                 <div className={classes.formItem}>
@@ -76,11 +80,10 @@ const ApplyScreen = () => {
                         value={values.password}
                         variant="outlined"
                         name="password"
-                        id="standard-password-input"
                         label="Password"
                         type="password"
-                        autoComplete="current-password"
                         fullWidth
+                        data-cy="apply_screen:form:password"
                     />
                 </div>
                 <div className={classes.formItem}>
@@ -89,13 +92,13 @@ const ApplyScreen = () => {
                         value={values.phone}
                         variant="outlined"
                         name="phone"
-                        id="standard-read-only-input"
                         label="Phone"
                         fullWidth
+                        data-cy="apply_screen:form:phone"
                     />
                 </div>
                 <div className={classes.formItem}>
-                    <Button onClick={onSubmitClick} variant="contained" fullWidth color="primary">
+                    <Button onClick={onSubmitClick} variant="contained" fullWidth color="primary" data-cy="apply_screen:form:submit">
                         Submit
                     </Button>
                 </div>
