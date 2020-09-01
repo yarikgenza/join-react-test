@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-import Header from "./components/Header";
-import ApplyScreen from './screens/ApplyScreen/apply.screen';
-import CandidatesScreen from './screens/CanidatesScreen/candidates.screen';
+import Header from './components/Header';
+import ApplyScreen from './screens/apply.screen';
+import CandidatesScreen from './screens/candidates.screen';
 
 import './App.css';
 
