@@ -1,7 +1,7 @@
-import { observable, flow } from 'mobx';
+import { observable, flow, action } from 'mobx';
 
+import { Candidate, CandidateStates } from '../types';
 import CandidatesApi from '../api/candidates.api';
-import { Candidate } from '../types';
 
 interface ICandidateStore {
     candidates: Array<Candidate>,
@@ -20,6 +20,19 @@ class CandidatesStore implements ICandidateStore {
   apply = flow(function* (payload) {
     yield CandidatesApi.apply(payload);
   });
+
+  @action removeCandidate = (candidateId?: string) => {
+    this.candidates = this.candidates.filter(c => c.id !== candidateId);
+  }
+
+  @action updateState = (candidateId: string, state: keyof typeof CandidateStates) => {
+    for (let candidate of this.candidates) {
+      if (candidate.id === candidateId) {
+        candidate.state = state;
+        break;
+      }
+    }
+  };
 }
 
 export default new CandidatesStore();

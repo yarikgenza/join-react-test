@@ -6,6 +6,7 @@ export enum CandidateStates {
 }
 
 export type Candidate = {
+    id?: string,
     fullName?: string,
     email?: string,
     password?: string,
